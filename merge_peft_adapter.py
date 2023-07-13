@@ -28,6 +28,7 @@ from transformers import (
 MODEL_CLASSES = {
     "bloom": (BloomForCausalLM, BloomTokenizerFast),
     "chatglm": (AutoModel, AutoTokenizer),
+    "chatglm2": (AutoModelForCausalLM, AutoTokenizer),
     "llama": (LlamaForCausalLM, LlamaTokenizer),
     "auto": (AutoModelForCausalLM, AutoTokenizer),
 }
@@ -41,6 +42,7 @@ def main():
     parser.add_argument('--peft_model_path', default=None, required=True, type=str,
                         help="Please specify LoRA model to be merged.")
     parser.add_argument('--output_dir', default='./merged', type=str)
+    parser.add_argument('--cache_dir', default=None, type=str)
 
     args = parser.parse_args()
     print(args)
@@ -55,13 +57,14 @@ def main():
     model_class, tokenizer_class = MODEL_CLASSES[args.model_type]
     if peft_config.task_type == "SEQ_CLS":
         print("Loading LoRA for sequence classification model")
-        if args.model_type == "chatglm":
+        if args.model_type in ["chatglm", "chatglm2"]:
             raise ValueError("chatglm does not support sequence classification")
         base_model = AutoModelForSequenceClassification.from_pretrained(
             base_model_path,
             num_labels=1,
             load_in_8bit=False,
             torch_dtype=torch.float16,
+            cache_dir=args.cache_dir,
             trust_remote_code=True,
             device_map="auto",
         )
@@ -71,11 +74,15 @@ def main():
             base_model_path,
             load_in_8bit=False,
             torch_dtype=torch.float16,
+            cache_dir=args.cache_dir,
             trust_remote_code=True,
             device_map="auto",
         )
+
     tokenizer = tokenizer_class.from_pretrained(peft_model_path, trust_remote_code=True)
+    print(f"tokenizer size is {len(tokenizer)}")
     base_model_token_size = base_model.get_input_embeddings().weight.size(0)
+    print(f"base model token size is {base_model_token_size}")
     if base_model_token_size != len(tokenizer):
         base_model.resize_token_embeddings(len(tokenizer))
         print(f"Resize vocabulary size {base_model_token_size} to {len(tokenizer)}")
