@@ -89,13 +89,13 @@ Training Stage:
 
 | Stage                           | Introduction |  Python script                                                                                                           | Shell script                                                                        |                      
 |:--------------------------------|:-------------|:------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------|
-| Stage 1: Continue Pretraining   | 增量预训练        |          [pretraining.py](https://github.com/shibing624/MedicalGPT/blob/main/pretraining.py)                     | [run_pt.sh](https://github.com/shibing624/MedicalGPT/blob/main/run_pt.sh)   | 
-| Stage 2: Supervised Fine-tuning | 有监督微调        | [supervised_finetuning.py](https://github.com/shibing624/MedicalGPT/blob/main/supervised_finetuning.py) | [run_sft.sh](https://github.com/shibing624/MedicalGPT/blob/main/run_sft.sh) | 
-| Stage 3: Reward Modeling        | 奖励模型建模       | [reward_modeling.py](https://github.com/shibing624/MedicalGPT/blob/main/reward_modeling.py)             | [run_rm.sh](https://github.com/shibing624/MedicalGPT/blob/main/run_rm.sh)   | 
-| Stage 4: Reinforcement Learning | 强化学习         |  [rl_training.py](https://github.com/shibing624/MedicalGPT/blob/main/rl_training.py)                     | [run_rl.sh](https://github.com/shibing624/MedicalGPT/blob/main/run_rl.sh)   | 
+| Stage 1: Continue Pretraining   | 增量预训练        |          [pretraining.py](https://github.com/3dot141/MedicalGPT/blob/main/pretraining.py)                     | [run_pt.sh](https://github.com/3dot141/MedicalGPT/blob/main/run_pt.sh)   | 
+| Stage 2: Supervised Fine-tuning | 有监督微调        | [supervised_finetuning.py](https://github.com/3dot141/MedicalGPT/blob/main/supervised_finetuning.py) | [run_sft.sh](https://github.com/3dot141/MedicalGPT/blob/main/run_sft.sh) | 
+| Stage 3: Reward Modeling        | 奖励模型建模       | [reward_modeling.py](https://github.com/3dot141/MedicalGPT/blob/main/reward_modeling.py)             | [run_rm.sh](https://github.com/3dot141/MedicalGPT/blob/main/run_rm.sh)   | 
+| Stage 4: Reinforcement Learning | 强化学习         |  [rl_training.py](https://github.com/3dot141/MedicalGPT/blob/main/rl_training.py)                     | [run_rl.sh](https://github.com/3dot141/MedicalGPT/blob/main/run_rl.sh)   | 
 
 - 提供完整四阶段串起来训练的pipeline：[run_training_pipeline.ipynb](https://github.com/3dot141/MedicalGPT/blob/main/run_training_pipeline.ipynb) ，其对应的colab： [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/3dot141/MedicalGPT/blob/main/run_training_pipeline.ipynb) ，运行完大概需要15分钟，我运行成功后的副本colab：[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1RGkbev8D85gR33HJYxqNdnEThODvGUsS?usp=sharing)
-- [训练细节说明wiki](https://github.com/shibing624/MedicalGPT/wiki/%E8%AE%AD%E7%BB%83%E7%BB%86%E8%8A%82%E8%AF%B4%E6%98%8E)
+- [训练细节说明wiki](https://github.com/3dot141/MedicalGPT/wiki/%E8%AE%AD%E7%BB%83%E7%BB%86%E8%8A%82%E8%AF%B4%E6%98%8E)
 
 #### Supported Models
 The following models are tested:
