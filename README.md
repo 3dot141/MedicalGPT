@@ -316,6 +316,7 @@ class PeftArguments(TrainingArguments):
 2. 尝试 merge lora 权重的时候，报错 `set_input_embeddings > NotImplementedError` 对比源码后，发现 [ChatGLM](https://huggingface.co/THUDM/chatglm-6b/blob/main/modeling_chatglm.py) 不存在问题，是因为实现了相关的源码。
 	1. 见对比图
 	2. ![505](docs/0652c68ed511cc1def7d1313868a8643_MD5.png)
+ 	3. 给 ChatGLM2 提了 PR [ChatGLM-huggingface](https://huggingface.co/THUDM/chatglm2-6b/discussions/49) 	
 
 ## TODO
 
